@@ -29,7 +29,15 @@ jobs:
       - name: Check Commit Messages
         uses: wagoid/commitlint-github-action@v5
 
-      # 4. Configurar entorno (Node.js como ejemplo)
+      # 4. Dockerfile y tamaño
+      - name: Build multistage Docker image
+        run: docker build -f Dockerfile -t app-multi:latest .
+
+      - name: Show Docker image size
+        run: |
+          docker images app-multi:latest --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
+
+      # Configurar entorno
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
