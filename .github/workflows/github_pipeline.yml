@@ -25,6 +25,8 @@ jobs:
             exit 1
           fi
 
+      # yo
+
       # 3. Validar formato de commits (Conventional Commits)
       - name: Check Commit Messages
         uses: wagoid/commitlint-github-action@v5
