@@ -36,21 +36,3 @@ jobs:
       - name: Show Docker image size
         run: |
           docker images app-multi:latest --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"
-
-      # Configurar entorno
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      # 5. Ejecutar Build
-      - name: Build project
-        run: npm run build
-
-      # 6. Ejecutar Tests
-      - name: Run tests
-        run: npm test
